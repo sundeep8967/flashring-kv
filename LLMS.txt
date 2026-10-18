@@ -4,9 +4,12 @@
 ## Project Summary
 - Project: FlashRing-KV
 - Purpose: Ultra-low latency, in-memory key-value and timeseries storage engine utilizing contiguous memory arenas and lock-free ring buffers.
-- Target Competition: "Speed Demon (72-Hour Systems Programming)" on Unstop.
+- Target Competition: "Speed Demon (72-Hour Systems Programming)"
+- Hackathon Registration Link: https://unstop.com/hackathons/speed-demon-72hr-systems
+- Submission Platform: Unstop
+- Registration Deadline: ~October 29, 2026
 - Primary Domain: Systems Programming, High-Performance Storage, Memory Locality, Concurrency.
-- Repository Root: .
+- Repository Root: /Users/apple/Desktop/anto/flashring-kv
 
 ## Core Mechanical Sympathy & Systems Concepts
 1. `core/arena.py`:
