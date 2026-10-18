@@ -1,0 +1,29 @@
+# FlashRing-KV — Machine-Readable Systems Specification
+> Canonical context file for LLMs, autonomous benchmarks, and systems evaluators.
+
+## Project Summary
+- Project: FlashRing-KV
+- Purpose: Ultra-low latency, in-memory key-value and timeseries storage engine utilizing contiguous memory arenas and lock-free ring buffers.
+- Target Competition: "Speed Demon (72-Hour Systems Programming)" on Unstop.
+- Primary Domain: Systems Programming, High-Performance Storage, Memory Locality, Concurrency.
+- Repository Root: /Users/apple/Desktop/anto/flashring-kv
+
+## Core Mechanical Sympathy & Systems Concepts
+1. `core/arena.py`:
+   - Pre-allocates aligned contiguous memory chunk (default 16–32 MB).
+   - Bump-pointer allocation with 8-byte alignment eliminates dynamic heap allocation overhead and memory fragmentation.
+   - O(1) bulk reset deallocation.
+2. `core/ring_buffer.py`:
+   - Lock-free bounded circular ring buffer with power-of-two capacity (2^16).
+   - Uses bitwise masking `(head & mask)` instead of expensive hardware integer modulo operations.
+   - Non-blocking single-producer, multi-consumer queue.
+3. `core/hash_map.py`:
+   - Robin Hood open-addressing hash table with FNV-1a fast 64-bit hashing.
+   - Keeps probe sequence lengths bounded and uniform, minimizing cache misses and avoiding clustering.
+4. `core/engine.py`:
+   - Unified KV storage engine interfacing with memory arena and open-addressed index.
+5. `benchmarks/run_bench.py`:
+   - Benchmarking harness providing throughput (ops/sec) and percentiles (P50, P90, P99) in microseconds.
+
+## Self-Test / Benchmark Execution
+Run `python3 benchmarks/run_bench.py` to trigger 50,000 continuous SET/GET cycles and 65,536 lock-free queue drain operations.
