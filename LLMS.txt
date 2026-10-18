@@ -6,7 +6,7 @@
 - Purpose: Ultra-low latency, in-memory key-value and timeseries storage engine utilizing contiguous memory arenas and lock-free ring buffers.
 - Target Competition: "Speed Demon (72-Hour Systems Programming)" on Unstop.
 - Primary Domain: Systems Programming, High-Performance Storage, Memory Locality, Concurrency.
-- Repository Root: /Users/apple/Desktop/anto/flashring-kv
+- Repository Root: .
 
 ## Core Mechanical Sympathy & Systems Concepts
 1. `core/arena.py`:
